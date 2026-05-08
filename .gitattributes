@@ -1,0 +1,5 @@
+*.exe filter=lfs diff=lfs merge=lfs -text
+client/public/download/* filter=lfs diff=lfs merge=lfs -text
+installer/dist/* filter=lfs diff=lfs merge=lfs -text
+client/public/download/sentio-macos filter=lfs diff=lfs merge=lfs -text
+client/public/download/sentio-linux filter=lfs diff=lfs merge=lfs -text
