@@ -16,9 +16,8 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   origin: [
-    'http://localhost:8081',
-    'http://localhost:5173',
-    'https://sentio.vercel.app'
+    'http://localhost:8080',
+    'https://cli-sentio.vercel.app'
   ],
   credentials: true,
 }));

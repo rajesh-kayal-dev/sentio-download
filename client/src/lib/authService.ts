@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:5000/api/auth';
+const BASE_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:5000/api/auth' 
+  : 'https://sentio-auth.vercel.app/api/auth';
 
 export const registerUser = async (name: string, email: string, password: string) => {
   const res = await fetch(`${BASE_URL}/register`, {
