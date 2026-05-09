@@ -10,9 +10,10 @@ const connectDB = async () => {
       family: 4,
     });
     console.log(`\x1b[32m%s\x1b[0m`, `✦ MongoDB Connected: ${conn.connection.host}`);
+    return true;
   } catch (error) {
-    console.error(`\x1b[31m%s\x1b[0m`, `✖ Error: ${error.message}`);
-    process.exit(1);
+    console.error(`\x1b[31m%s\x1b[0m`, `✖ MongoDB Connection Error: ${error.message}`);
+    return false;
   }
 };
 
