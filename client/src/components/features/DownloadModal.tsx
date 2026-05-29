@@ -13,6 +13,7 @@ const PLATFORMS = [
     id: "windows",
     name: "Windows",
     filename: "Sentio_Setup_Pro.exe",
+    url: "https://github.com/rajesh-kayal-dev/sentio-download/releases/download/v1.0.0/Sentio_Setup_Pro.exe",
     icon: Monitor,
     description: "Full .exe installer for Windows 10/11"
   },
@@ -20,6 +21,7 @@ const PLATFORMS = [
     id: "macos",
     name: "macOS",
     filename: "sentio-macos",
+    url: "https://github.com/rajesh-kayal-dev/sentio-download/releases/download/v1.0.0/sentio-macos",
     icon: Apple,
     description: "Universal binary for Intel & M1/M2"
   },
@@ -27,20 +29,21 @@ const PLATFORMS = [
     id: "linux",
     name: "Linux",
     filename: "sentio-linux",
+    url: "https://github.com/rajesh-kayal-dev/sentio-download/releases/download/v1.0.0/sentio-linux",
     icon: Terminal,
     description: "Native x64 binary for Linux distros"
   }
 ];
 
 export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
-  const startDownload = (filename: string, name: string) => {
+  const startDownload = (filename: string, name: string, url: string) => {
     toast.success(`Starting download: ${name}`, {
       description: "Your setup file will appear in your downloads folder.",
       duration: 3000,
     });
 
     const link = document.createElement("a");
-    link.href = `/download/${filename}`;
+    link.href = url;
     link.download = filename;
     document.body.appendChild(link);
     link.click();
@@ -70,7 +73,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                onClick={() => startDownload(platform.filename, platform.name)}
+                onClick={() => startDownload(platform.filename, platform.name, platform.url)}
                 className="group relative flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-primary/30 transition-all text-left w-full"
               >
                 <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
@@ -88,7 +91,7 @@ export const DownloadModal = ({ isOpen, onClose }: DownloadModalProps) => {
           </div>
 
           <p className="mt-8 text-center text-[10px] text-zinc-600 uppercase tracking-[0.2em]">
-            Signed & Secured Binaries
+            Standalone CLI Installer
           </p>
         </div>
       </DialogContent>
